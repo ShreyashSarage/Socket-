@@ -1,6 +1,6 @@
 # Socket Creation in c
 
-![!](/home/ritesh/Downloads/socket-programming-in-c-or-cpp.png "Socket Creation")
+![!](https://static.javatpoint.com/cpp/images/socket-programming-in-c-or-cpp.png "Socket Creation")
 
 ```
 int socket = socket(family,type,proto);
@@ -8,16 +8,16 @@ int socket = socket(family,type,proto);
 ## socket:
 socket discriptor, an integer(like a file handle)
 
-## family
+#### family
 integer, commmon domain eq
 function return  -1 upon failure
 
-## type
-### communication types
+#### type
+##### communication types
 1. SOCK_STREAM
 2. SOCK_DGRAM
 
-## Proto
+#### Proto
 1. IPPROTO_TCP, IPPROTO_UDP
 
 
@@ -99,3 +99,35 @@ int status = accept(sockid, &clientaddr,&addrlen);
 
 #### addrlen
 -> sizeof(client_addr)
+
+
+## Send and Receive(STREAM)
+```
+int count = send(sockid,msg,msgLen,flags);
+```
+-> **msg** : const void[], meddage to be transmitted
+-> **msgLen** : int, length of message(in bytes) to transmit.
+-> **flags** : special options (**normally zero**)
+
+**_return -1,if error_**
+
+```
+int const = recv(sockid,recvBuffer,buflen,flags);
+```
+
+-> **recvbuf** : void[], stores receiving bytes
+-> **buflen** : bytes received
+-> **flags** : special options (**normally zero**)
+
+### DGRAM
+```
+int const = sendto(sockid,msg,msgLen,flags,&foreignAddr,addrlen);
+```
+```
+int count = recfrom(sockid,recvBuf,buflen,flags,&clientAddr,adrlen);
+```
+## close()
+```
+int status = close(sockid);
+```
+
